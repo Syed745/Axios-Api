@@ -1,23 +1,26 @@
-import logo from './logo.svg';
+
 import './App.css';
+import PermanentDrawerLeft from './component/Drawer';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Posts from './component/pages/Posts';
+import Albums from './component/pages/Albums';
+import Todos from './component/pages/Todos';
+import Users from './component/pages/Users';
+import Home from './component/pages/Home';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <PermanentDrawerLeft />
+        <Routes>
+          <Route index path="/*" element={<Home />} />
+          <Route path="POSTS" element={<Posts />} />
+          <Route path="ALBUMS" element={<Albums />} />
+          <Route path="TODOS" element={<Todos />} />
+          <Route path="USER" element={<Users />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
